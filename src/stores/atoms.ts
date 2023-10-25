@@ -1,21 +1,9 @@
-import {atom, useAtom, useSetAtom} from 'jotai'
-import {Pokemon, PokemonList} from '../types/pokemon'
-import pokemondata from '../assets/pokemondata.json'
+import {atom} from 'jotai'
+// import pokemondata from '../assets/pokemondata.json'
 // import { fetchGistData, gistId } from '../api/endpoints';
 
-const initialPokemon: Pokemon = {
-    name: 'Pikachu',
-    type: 'Electric',
-    generation: 1,
-}
 
-const initialPokemonList: PokemonList = [{
-    id: 1,
-    name: {},
-    type: 'Grass',
-}]
-
-export const pokemonAtom = atom(initialPokemon);
+export const pokemonAtom = atom('');
 export const pokemonDataAtom = atom([])
 export const pokemonListAtom = atom({ filter: '' });
 export const textAtom= atom('hello')

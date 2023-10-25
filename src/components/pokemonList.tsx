@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useAtom } from 'jotai';
-// import { pokemonAtom,fetchDataAndPopulateAtom, pokemonListAtom } from '../stores/atoms'; //This is only needed for iterating through a list that comes via URL
 import pokemondata from '../assets/pokemondata.json'
 import { pokemonDataAtom, pokemonListAtom } from '../stores/atoms';
 
@@ -17,19 +16,19 @@ export function PokemonList() {
     });
 
 /** THIS IS FOR USESTATE
+ 
 export function PokemonList({filter}) {
 const filteredPokemon = pokemondata.filter ((pokemon) => {
     return pokemon.name.english.toLowerCase().includes(filter.toLowerCase());
 });
-
+     This logic for for iterating through data from a URL that is populated into an atom
+         const [pokemonList] = useAtom(pokemonListAtom);
+         useEffect(() => {
+             fetchDataAndPopulateAtom().catch((error) => {
+             console.error('Failed to fetch data:', error);
+             });
+         }, []);
 */
-    // This logic for for iterating through data from a URL that is populated into an atom
-    //     const [pokemonList] = useAtom(pokemonListAtom);
-    //     useEffect(() => {
-    //         fetchDataAndPopulateAtom().catch((error) => {
-    //         console.error('Failed to fetch data:', error);
-    //         });
-    //     }, []);
 
   return (
 
