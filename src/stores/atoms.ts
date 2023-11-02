@@ -3,7 +3,7 @@ import {atom} from 'jotai'
 // import { fetchGistData, gistId } from '../api/endpoints';
 
 
-export const pokemonAtom = atom('');
+// export const pokemonAtom:PokemonList = atom([]);
 export const pokemonDataAtom = atom([])
 export const pokemonListAtom = atom({ filter: '' });
 export const textAtom= atom('hello')
