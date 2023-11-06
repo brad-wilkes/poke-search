@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+flask/venv/
+flask/migrations/env.py
+flask/migrations/script.py.mako
+flask/migrations/alembic.ini
+flask/__pycache__/app.cpython-311.pyc

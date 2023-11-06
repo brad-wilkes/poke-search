@@ -1,10 +1,11 @@
 import {atom} from 'jotai'
+import {PokemonListArray} from '../types/pokemon'
 // import pokemondata from '../assets/pokemondata.json'
 // import { fetchGistData, gistId } from '../api/endpoints';
 
 
 // export const pokemonAtom:PokemonList = atom([]);
-export const pokemonDataAtom = atom([])
+export const pokemonDataAtom = atom<PokemonListArray>([])
 export const pokemonListAtom = atom({ filter: '' });
 export const textAtom= atom('hello')
 export const uppercaseAtom = atom(
