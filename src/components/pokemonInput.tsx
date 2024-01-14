@@ -20,7 +20,7 @@ export const PokemonInput = () => {
         <div>
         <input value={pokemon.name} onChange={handleNameChange} placeholder='Name' />
         <input value={pokemon.type} onChange={handleTypeChange} placeholder='Type' />
-        <input value={pokemon.generation} onChange={handleGenerat ionChange} placeholder='Generation' />
+        <input value={pokemon.generation} onChange={handleGenerationChange} placeholder='Generation' />
         </div>
     );
 };
