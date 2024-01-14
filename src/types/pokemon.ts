@@ -10,12 +10,6 @@ export type PokemonType = {
     generation: string
 }
 
-export type PokemonListArray = Array<{
-    id: number;
-    name: { english?: string; japanese?: string; chinese?: string; french?: string };
-    type: string | string[];
-}>;
-
 export type PokemonList = Array<{
     id: number;
     name: { english?: string; japanese?: string; chinese?: string; french?: string };
