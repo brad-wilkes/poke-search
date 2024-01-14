@@ -1,26 +1,32 @@
-import { useAtom } from 'jotai'
-import {pokemonDataAtom} from '../stores/atoms'
+import React from 'react';
+import { useAtom } from 'jotai';
+import { pokemonDataAtom } from '../stores/atoms';
 
 export const PokemonFilter = () => {
-    const [pokemon, setPokemon] = useAtom(pokemonDataAtom);
+    const [pokemonList, setPokemonList] = useAtom(pokemonDataAtom);
 
-    const handleNameChange = (e: { target: { value: any; }; }) => {
-        setPokemon({...pokemon, name: e.target.value});
+    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const updatedPokemonList = [...pokemonList];
+        if (updatedPokemonList.length > 0) {
+            // Assuming 'name' is a string property
+            updatedPokemonList[0].name.english = e.target.value;
+            setPokemonList(updatedPokemonList);
+        }
     };
 
-    const handleTypeChange = (e: { target: { value: any; }; }) => {
-        setPokemon({...pokemon, type: e.target.value});
-    };
-
-    const handleGenerationChange = (e: { target: { value: any; }; }) => {
-        setPokemon({...pokemon, generation: e.target.value});
+    const handleTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const updatedPokemonList = [...pokemonList];
+        if (updatedPokemonList.length > 0) {
+            // Assuming 'type' is a string or an array property
+            updatedPokemonList[0].type = e.target.value;
+            setPokemonList(updatedPokemonList);
+        }
     };
 
     return (
         <div>
-        <input value={pokemon.name} onChange={handleNameChange} placeholder='Name' />
-        <input value={pokemon.type} onChange={handleTypeChange} placeholder='Type' />
-        <input value={pokemon.generation} onChange={handleGenerationChange} placeholder='Generation' />
+            <input value={pokemonList[0]?.name?.english || ''} onChange={handleNameChange} placeholder='Name' />
+            <input value={pokemonList[0]?.type || ''} onChange={handleTypeChange} placeholder='Type' />
         </div>
     );
 };

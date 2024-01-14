@@ -2,7 +2,6 @@ import { useAtom } from 'jotai';
 import pokemondata from '../assets/pokemondata.json'
 import { pokemonDataAtom, pokemonListAtom } from '../stores/atoms';
 
-
 export function PokemonList() {
 
     const [pokemonData] = useAtom(pokemonDataAtom);
@@ -14,7 +13,6 @@ export function PokemonList() {
         return pokemon.name.english.toLowerCase().includes(pokemonList.filter.toLowerCase());
     });
 
-
   return (
 
     <div>
@@ -23,7 +21,7 @@ export function PokemonList() {
             <hr />
           {/* <p>Id: {pokemon.id}   </p> */}
           <p>Name: {pokemon.name.english}   </p>
-          <p>Type: {pokemon.type.join(', ')}    </p>
+          <p>Type: {Array.isArray(pokemon.type) ? pokemon.type.join(', ') : pokemon.type}    </p>
         </div>
       ))}
       <hr />
