@@ -1,8 +1,8 @@
 import { useAtom } from 'jotai'
-import {pokemonDataAtom} from '../stores/atoms'
+import {pokemonListAtom} from '../stores/atoms'
 
 export const PokemonInput = () => {
-    const [pokemon, setPokemon] = useAtom(pokemonDataAtom);
+    const [pokemon, setPokemon] = useAtom(pokemonListAtom);
 
     const handleNameChange = (e: { target: { value: any; }; }) => {
         setPokemon({...pokemon, name: e.target.value});

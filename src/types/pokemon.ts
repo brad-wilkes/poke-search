@@ -15,3 +15,4 @@ export type PokemonList = Array<{
     name: { english?: string; japanese?: string; chinese?: string; french?: string };
     type: string | string[];
 }>;
+
