@@ -1,7 +1,7 @@
 import './App.css'
 import React, { useState } from 'react'
 import { Input } from './components/input'
-import { PokemonList } from './components/pokemonList'
+import { PokemonList } from './components/PokemonList'
 
 const App: React.FC = () => {
 
