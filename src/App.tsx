@@ -1,9 +1,8 @@
 import './App.css'
-import React from 'react'
 import { Input } from './components/input'
 import { PokemonList } from './components/PokemonList.tsx'
 
-const App: React.FC = () => {
+const App = () => {
 
 
   return (
