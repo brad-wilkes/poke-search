@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { pokemonListAtom } from '../stores/atoms';
+import { pokemonFilterAtom } from '../stores/atoms';
 
 /** THIS IS FOR USEEFFECT AND USESTATE
 
@@ -11,16 +11,16 @@ export const Input = ({ setFilter }) => {
 */
 
 export const Input = () => {
-const [pokemonList, setPokemonList] = useAtom(pokemonListAtom);
+const [pokemonFilter, setPokemonFilter] = useAtom(pokemonFilterAtom);
 
   const handleChange = (e: { target: { value: any; }; }) => {
     const value = e.target.value;
-    setPokemonList((prev) => ({ ...prev, filter: value}))
+    setPokemonFilter((prev) => ({ ...prev, filter: value}))
 
   };
 
   return (
-    <input value={pokemonList.filter} onChange={handleChange} />
+    <input value={pokemonFilter.filter} onChange={handleChange} />
   );
 
 };

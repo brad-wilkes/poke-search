@@ -1,16 +1,16 @@
 import { useAtom } from 'jotai';
 import pokemondata from '../assets/pokemondata.json'
-import { pokemonDataAtom, pokemonListAtom } from '../stores/atoms';
+import { pokemonDataAtom, pokemonFilterAtom } from '../stores/atoms';
 
 export function PokemonList() {
 
     const [pokemonData] = useAtom(pokemonDataAtom);
-    const [pokemonList] = useAtom(pokemonListAtom);
+    const [pokemonFilter] = useAtom(pokemonFilterAtom);
 
-    const filteredPokemon = pokemonList.filter.trim() === ''
+    const filteredPokemon = pokemonFilter.filter.trim() === ''
     ? pokemonData
     : pokemondata.filter((pokemon) => {
-        return pokemon.name.english.toLowerCase().includes(pokemonList.filter.toLowerCase());
+        return pokemon.name.english.toLowerCase().includes(pokemonFilter.filter.toLowerCase());
     });
 
   return (
