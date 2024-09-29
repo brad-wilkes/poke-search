@@ -1,40 +1,24 @@
-import { useEffect } from 'react';
 import { useAtom } from 'jotai';
-import { pokemonDataAtom, pokemonFilterAtom } from '../stores/atoms';
-import { fetchPokemonList } from '../api/endpoints';
+import { pokemonDataAtom } from '../stores/atoms';
 
 export function PokemonList() {
-  const [pokemonData, setPokemonData] = useAtom(pokemonDataAtom);
-  const [pokemonFilter] = useAtom(pokemonFilterAtom);
+  const [pokemonData] = useAtom(pokemonDataAtom);
 
-  useEffect(() => {
-    const fetchAndSetPokemonList = async () => {
-      try {
-        const data = await fetchPokemonList();
-        setPokemonData(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchAndSetPokemonList();
-  }, [setPokemonData]);
-
-  const filteredPokemon = pokemonFilter.trim() === ''
-    ? pokemonData
-    : pokemonData.filter((pokemon) => {
-        return pokemon.name.english?.toLowerCase().includes(pokemonFilter.toLowerCase());
-      });
+  console.log('Pokemon Data:', pokemonData); // Debugging log
 
   return (
     <div>
-      {filteredPokemon.map((pokemon, index) => (
-        <div key={index}>
-          <hr />
-          <p>Name: {pokemon.name.english}</p>
-          <p>Type: {Array.isArray(pokemon.type) ? pokemon.type.join(', ') : pokemon.type}</p>
-        </div>
-      ))}
+      {pokemonData.length > 0 ? (
+        pokemonData.map((pokemon) => (
+          <div key={pokemon.id}>
+            <hr />
+            <p>Name: {pokemon.name || 'N/A'}</p>
+            <p>Type: {[pokemon.type1, pokemon.type2].filter(Boolean).join(', ') || 'N/A'}</p>
+          </div>
+        ))
+      ) : (
+        <p>No Pokémon found. Please enter a search term.</p>
+      )}
       <hr />
     </div>
   );
