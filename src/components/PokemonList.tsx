@@ -1,29 +1,24 @@
 import { useAtom } from 'jotai';
-import pokemondata from '../assets/pokemondata.json'
-import { pokemonDataAtom, pokemonFilterAtom } from '../stores/atoms';
+import { pokemonDataAtom } from '../stores/atoms';
 
 export function PokemonList() {
+  const [pokemonData] = useAtom(pokemonDataAtom);
 
-    const [pokemonData] = useAtom(pokemonDataAtom);
-    const [pokemonFilter] = useAtom(pokemonFilterAtom);
-
-    const filteredPokemon = pokemonFilter.filter.trim() === ''
-    ? pokemonData
-    : pokemondata.filter((pokemon) => {
-        return pokemon.name.english.toLowerCase().includes(pokemonFilter.filter.toLowerCase());
-    });
+  console.log('Pokemon Data:', pokemonData); // Debugging log
 
   return (
-
     <div>
-      {filteredPokemon.map((pokemon, index) => (
-        <div key={index}>
+      {pokemonData.length > 0 ? (
+        pokemonData.map((pokemon) => (
+          <div key={pokemon.id}>
             <hr />
-          {/* <p>Id: {pokemon.id}   </p> */}
-          <p>Name: {pokemon.name.english}   </p>
-          <p>Type: {Array.isArray(pokemon.type) ? pokemon.type.join(', ') : pokemon.type}    </p>
-        </div>
-      ))}
+            <p>Name: {pokemon.name || 'N/A'}</p>
+            <p>Type: {[pokemon.type1, pokemon.type2].filter(Boolean).join(', ') || 'N/A'}</p>
+          </div>
+        ))
+      ) : (
+        <p>No Pokémon found. Please enter a search term.</p>
+      )}
       <hr />
     </div>
   );

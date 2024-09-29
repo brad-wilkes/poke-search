@@ -1,28 +1,20 @@
 import { useAtom } from 'jotai';
 import { pokemonFilterAtom } from '../stores/atoms';
-
-/** THIS IS FOR USEEFFECT AND USESTATE
-
-export const Input = ({ setFilter }) => {
- const [filter, setLocalFilter] = useState('');
- const value = e.target.value;
-    setLocalFilter(value); // Update local filter state
-    setFilter(value); // Pass the filter value to the parent component
-*/
+import { useSearchAndSetPokemonList } from '../api/endpoints';
 
 export const Input = () => {
-const [pokemonFilter, setPokemonFilter] = useAtom(pokemonFilterAtom);
+  const [pokemonFilter, setPokemonFilter] = useAtom(pokemonFilterAtom);
+  const searchAndSetPokemonList = useSearchAndSetPokemonList();
 
-  const handleChange = (e: { target: { value: any; }; }) => {
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setPokemonFilter((prev) => ({ ...prev, filter: value}))
-
+    setPokemonFilter(value);
+    if (value.trim() !== '') {
+      await searchAndSetPokemonList(value);
+    }
   };
 
   return (
-    <input value={pokemonFilter.filter} onChange={handleChange} />
+    <input value={pokemonFilter} onChange={handleChange} placeholder="Search Pokémon" />
   );
-
 };
-
-
