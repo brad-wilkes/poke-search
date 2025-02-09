@@ -17,7 +17,7 @@ export function PokemonList() {
           </div>
         ))
       ) : (
-        <p>No Pokémon found. Please enter a search term.</p>
+        <p>No matching Pokémon found...</p>
       )}
       <hr />
     </div>
